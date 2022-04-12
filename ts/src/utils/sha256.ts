@@ -1,5 +1,5 @@
-import { sha256 } from "js-sha256";
+import { createHash } from "create-hash";
 
 export function hash(data: string): string {
-  return sha256(data);
+  return createHash('sha256').update(data).digest('hex')
 }

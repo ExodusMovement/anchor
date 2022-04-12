@@ -2,7 +2,7 @@ import { Buffer } from "buffer";
 import { Layout } from "buffer-layout";
 import { Idl } from "../idl.js";
 import { IdlCoder } from "./idl.js";
-import { sha256 } from "js-sha256";
+import { createHash } from "create-hash";
 import camelcase from "camelcase";
 
 /**
@@ -59,8 +59,7 @@ export class AccountsCoder<A extends string = string> {
    * @param name The name of the account to calculate the discriminator.
    */
   public static accountDiscriminator(name: string): Buffer {
-    return Buffer.from(
-      sha256.digest(`account:${camelcase(name, { pascalCase: true })}`)
-    ).slice(0, ACCOUNT_DISCRIMINATOR_SIZE);
+    const arg = `account:${camelcase(name, { pascalCase: true })}`
+    return createHash('sha256').update(arg).digest().slice(0, ACCOUNT_DISCRIMINATOR_SIZE);
   }
 }

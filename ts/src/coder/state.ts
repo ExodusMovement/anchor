@@ -1,6 +1,6 @@
 import { Buffer } from "buffer";
 import { Layout } from "buffer-layout";
-import { sha256 } from "js-sha256";
+import { createHash } from "create-hash";
 import { Idl } from "../idl.js";
 import { IdlCoder } from "./idl.js";
 import * as features from "../utils/features.js";
@@ -35,5 +35,5 @@ export class StateCoder {
 // Calculates unique 8 byte discriminator prepended to all anchor state accounts.
 export async function stateDiscriminator(name: string): Promise<Buffer> {
   let ns = features.isSet("anchor-deprecated-state") ? "account" : "state";
-  return Buffer.from(sha256.digest(`${ns}:${name}`)).slice(0, 8);
+  return createHash('sha256').update(`${ns}:${name}`).digest().slice(0, 8);
 }

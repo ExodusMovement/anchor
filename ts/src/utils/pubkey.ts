@@ -1,6 +1,6 @@
 import { Buffer } from "buffer";
 import BN from "bn.js";
-import { sha256 as sha256Sync } from "js-sha256";
+import { createHash } from "create-hash";
 import { PublicKey } from "@solana/web3.js";
 import { Address, translateAddress } from "../program/common.js";
 
@@ -15,8 +15,8 @@ export function createWithSeedSync(
     Buffer.from(seed),
     programId.toBuffer(),
   ]);
-  const hash = sha256Sync.digest(buffer);
-  return new PublicKey(Buffer.from(hash));
+  const hashBuffer = createHash('sha256').update(buffer).digest();
+  return new PublicKey(hashBuffer);
 }
 
 // Sync version of web3.PublicKey.createProgramAddress.
@@ -38,7 +38,7 @@ export function createProgramAddressSync(
     programId.toBuffer(),
     Buffer.from("ProgramDerivedAddress"),
   ]);
-  let hash = sha256Sync(new Uint8Array(buffer));
+  let hash = createHash('sha256').update(buffer).digest('hex');
   let publicKeyBytes = new BN(hash, 16).toArray(undefined, 32);
   if (PublicKey.isOnCurve(new Uint8Array(publicKeyBytes))) {
     throw new Error(`Invalid seeds, address must fall off the curve`);

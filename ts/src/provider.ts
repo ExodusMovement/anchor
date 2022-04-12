@@ -10,7 +10,6 @@ import {
   SimulatedTransactionResponse,
   Commitment,
 } from "@solana/web3.js";
-import { isBrowser } from "./utils/common.js";
 
 /**
  * The network and wallet context used to send transactions paid for and signed
@@ -44,17 +43,7 @@ export default class Provider {
    * (This api is for Node only.)
    */
   static local(url?: string, opts?: ConfirmOptions): Provider {
-    if (isBrowser) {
       throw new Error(`Provider local is not available on browser.`);
-    }
-    opts = opts ?? Provider.defaultOptions();
-    const connection = new Connection(
-      url ?? "http://localhost:8899",
-      opts.preflightCommitment
-    );
-    const NodeWallet = require("./nodewallet.js").default;
-    const wallet = NodeWallet.local();
-    return new Provider(connection, wallet, opts);
   }
 
   /**
@@ -64,21 +53,7 @@ export default class Provider {
    * (This api is for Node only.)
    */
   static env(): Provider {
-    if (isBrowser) {
       throw new Error(`Provider env is not available on browser.`);
-    }
-
-    const process = require("process");
-    const url = process.env.ANCHOR_PROVIDER_URL;
-    if (url === undefined) {
-      throw new Error("ANCHOR_PROVIDER_URL is not defined");
-    }
-    const options = Provider.defaultOptions();
-    const connection = new Connection(url, options.commitment);
-    const NodeWallet = require("./nodewallet.js").default;
-    const wallet = NodeWallet.local();
-
-    return new Provider(connection, wallet, options);
   }
 
   /**

@@ -2,7 +2,7 @@ import { Buffer } from "buffer";
 import { Layout } from "buffer-layout";
 import { Idl } from "../idl.js";
 import { IdlCoder } from "./idl.js";
-import { createHash } from "create-hash";
+import createHash from "create-hash";
 import camelcase from "camelcase";
 
 /**

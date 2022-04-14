@@ -1,6 +1,6 @@
 import { Buffer } from "buffer";
 import BN from "bn.js";
-import { createHash } from "create-hash";
+import createHash from "create-hash";
 import { PublicKey } from "@solana/web3.js";
 import { Address, translateAddress } from "../program/common.js";
 

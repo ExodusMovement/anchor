@@ -1,7 +1,7 @@
 import { Buffer } from "buffer";
 import * as base64 from "base64-js";
 import { Layout } from "buffer-layout";
-import { createHash } from "create-hash";
+import createHash from "create-hash";
 import { Idl, IdlEvent, IdlTypeDef } from "../idl.js";
 import { Event, EventData } from "../program/event.js";
 import { IdlCoder } from "./idl.js";

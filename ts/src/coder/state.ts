@@ -1,6 +1,6 @@
 import { Buffer } from "buffer";
 import { Layout } from "buffer-layout";
-import { createHash } from "create-hash";
+import createHash from "create-hash";
 import { Idl } from "../idl.js";
 import { IdlCoder } from "./idl.js";
 import * as features from "../utils/features.js";

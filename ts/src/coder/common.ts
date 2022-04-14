@@ -1,6 +1,6 @@
 import { Buffer } from "buffer";
 import { snakeCase } from "snake-case";
-import { createHash } from "create-hash";
+import createHash from "create-hash";
 import { Idl, IdlField, IdlTypeDef, IdlEnumVariant, IdlType } from "../idl.js";
 import { IdlError } from "../error.js";
 

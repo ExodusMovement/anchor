@@ -20,8 +20,7 @@
     "node": ">=11"
   },
   "files": [
-    "dist/cjs/**/*.ts",
-    "dist/cjs/**/*.js"
+    "dist/cjs/"
   ],
   "scripts": {
     "build": "rimraf dist/ && yarn build:node && yarn build:browser",

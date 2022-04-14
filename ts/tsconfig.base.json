@@ -3,9 +3,9 @@
     "./src/**/*"
   ],
   "compilerOptions": {
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": true,
-    "declarationMap": true,
+    "declarationMap": false,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,

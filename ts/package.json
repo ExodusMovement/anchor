@@ -1,6 +1,6 @@
 {
   "name": "@exodus/project-serum-anchor",
-  "version": "0.20.1-exodus.0",
+  "version": "0.20.1-exodus.1",
   "description": "Anchor client",
   "main": "./dist/cjs/index.js",
   "license": "(MIT OR Apache-2.0)",
